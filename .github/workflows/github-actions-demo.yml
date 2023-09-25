@@ -16,5 +16,21 @@ on:
       environment:
         description: 'Environment to deploy to'
         type: environment
-        required: true 
-    
+        required: true
+        
+jobs:
+  Build:
+    name: test job
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "the job was triggered by ${{github.event_name}}"
+          echo "branch name: ${{github.ref}}"
+      - uses: actions/checkout@v3.0.2
+      - name: List files in the repository
+        run: | 
+          echo "the job in ${{github.repository}} contains the following files:"
+          tree
+       
+        
+     
